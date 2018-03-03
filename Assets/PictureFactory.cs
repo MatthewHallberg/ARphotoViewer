@@ -8,8 +8,19 @@ public class PictureFactory : MonoBehaviour {
 	public GoogleService googleService;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
+		//develop
+		#if UNITY_EDITOR
 		googleService.GetPictures ("dog memes");
+		#endif
+	}
+
+	public void DeleteOldPictures(){
+		if (transform.childCount > 0) {
+			foreach (Transform child in this.transform) {
+				Destroy (child.gameObject);
+			}
+		}
 	}
 	
 	public void CreateImages(List<string>urlList, float radius){
@@ -17,18 +28,17 @@ public class PictureFactory : MonoBehaviour {
 		Vector3 center = Camera.main.transform.position;
 		foreach (string url in urlList) {
 			picNum++;
-			int angle = picNum * 30;
+			float angle = (picNum * 40);
 			Vector3 pos = RandomCircle(center,radius,angle);
 			GameObject pic = Instantiate (picPrefab,pos,Quaternion.identity, this.transform);
 			pic.GetComponent<PictureBehavior> ().LoadImage (url);
 		}
 	}
-	Vector3 RandomCircle(Vector3 center, float radius,int a){
-		float ang = a;
+	Vector3 RandomCircle(Vector3 center, float radius,float angle){
 		Vector3 pos;
-		pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+		pos.x = center.x + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
 		pos.y = center.y; 
-		pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+		pos.z = center.z + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
 		return pos;
 	}
 }
