@@ -49,3 +49,4 @@
 /Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/Unity.Cecil.Pdb.dll
 /Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/Unity.Cecil.Mdb.dll
+/Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/websocket-sharp.dll

@@ -52,11 +52,16 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Vuforia\Editor\Scripts\OpenSourceInitializer.cs" />
+     <Compile Include="Assets\Watson\Scripts\Editor\WatsonMenu.cs" />
+     <Compile Include="Assets\Watson\ThirdParty\FullSerializer\Aot\Editor\fsAotConfigurationEditor.cs" />
+     <Compile Include="Assets\Watson\ThirdParty\FullSerializer\Editor\AotHelpers.cs" />
      <None Include="Assets\Editor\Vuforia\VuforiaMars_ModelTarget\authoringinfo.xml" />
      <None Include="Assets\Editor\Vuforia\VuforiaMars_VuMark\authoringinfo.xml" />
      <None Include="Assets\Editor\Vuforia\Emulator\VuforiaEmulator.xml" />
      <None Include="Assets\Editor\Vuforia\TargetsetData\VuforiaMars_Object_info.xml" />
+     <None Include="Assets\Watson\Scripts\Editor\Help\Working\SHFBContent.xml" />
      <None Include="Assets\Editor\Vuforia\ForPrint\ModelTarget\readme_3dprint.txt" />
+     <None Include="Assets\Watson\Scripts\Editor\Help\Working\StopWordList.txt" />
      <None Include="Assets\Editor\Vuforia\CylinderTargetTextures\VuforiaMars_Images\authoringinfo.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -150,6 +155,9 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/matthew/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="websocket-sharp">
+ <HintPath>/Users/matthew/Desktop/ARphotoViewer/Assets/Watson/Plugins/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

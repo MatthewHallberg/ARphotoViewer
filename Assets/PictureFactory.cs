@@ -11,7 +11,7 @@ public class PictureFactory : MonoBehaviour {
 	void OnEnable () {
 		//develop
 		#if UNITY_EDITOR
-		googleService.GetPictures ("dog memes");
+//		googleService.GetPictures ("dog memes");
 		#endif
 	}
 
@@ -23,22 +23,25 @@ public class PictureFactory : MonoBehaviour {
 		}
 	}
 	
-	public void CreateImages(List<string>urlList, float radius){
-		int picNum = 0;
+	public void CreateImages(List<string>urlList, int resultNum, Vector3 camForward){
+		int picNum = 1;
 		Vector3 center = Camera.main.transform.position;
 		foreach (string url in urlList) {
-			picNum++;
-			float angle = (picNum * 40);
-			Vector3 pos = RandomCircle(center,radius,angle);
+			Vector3 pos = GetPosition (picNum, resultNum, camForward);
 			GameObject pic = Instantiate (picPrefab,pos,Quaternion.identity, this.transform);
-			pic.GetComponent<PictureBehavior> ().LoadImage (url);
+			float waitTime = picNum * .5f;
+			pic.GetComponent<PictureBehavior> ().LoadImage (url,waitTime);
+			picNum++;
 		}
 	}
-	Vector3 RandomCircle(Vector3 center, float radius,float angle){
-		Vector3 pos;
-		pos.x = center.x + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
-		pos.y = center.y; 
-		pos.z = center.z + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
+
+	Vector3 GetPosition(int picNum,int resultNum,Vector3 camForward){
+		Vector3 pos = Vector3.zero;
+		if (picNum <= 5) {
+			pos = camForward + new Vector3 (picNum * -3, 0, resultNum * 3.5f);
+		} else {
+			pos = camForward + new Vector3 ((picNum % 5) * 3, 0, resultNum * 3.5f);
+		}
 		return pos;
 	}
 }

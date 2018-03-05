@@ -49,3 +49,4 @@
 /Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
 /Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
 /Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+/Users/matthew/Desktop/ARphotoViewer/Temp/bin/Debug/websocket-sharp.dll

@@ -18,7 +18,6 @@ public class PictureBehavior : MonoBehaviour {
 		//force into air 
 		desiredPosition = transform.localPosition;
 		transform.localPosition += new Vector3 (0, 20, 0);
-		shouldLerp = true;
 	}
 
 	void Update(){
@@ -28,17 +27,25 @@ public class PictureBehavior : MonoBehaviour {
 		}
 	}
 
-	public void LoadImage(string url){
-		StartCoroutine (LoadImageFromURL (url));
+	public void LoadImage(string url, float waitTime){
+		StartCoroutine (LoadImageFromURL (url, waitTime));
 	}
 
-	IEnumerator LoadImageFromURL(string url){
+	IEnumerator LoadImageFromURL(string url, float waitTime){
 		this.url = url;
 		WWW www = new WWW(url);
 		yield return www;
 		quadRenderer.material.mainTexture = www.texture;
+		yield return new WaitForSeconds (waitTime);
+		shouldLerp = true;
+		yield return new WaitForSeconds (.5f);
+		GetComponent<AudioSource> ().Play ();
 	}
 
+	/// <summary>
+	/// Change rigid body behavior on collisions so objects quit shaking(since they are constantly lerping for elastic behavior)
+	/// </summary>
+	/// <param name="col">Col.</param>
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.name.Contains ("ARCamera")) {
 			rb.constraints = RigidbodyConstraints.FreezePositionY | 
